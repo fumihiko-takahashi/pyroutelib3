@@ -42,6 +42,7 @@ import xml.etree.ElementTree as etree
 from warnings import warn
 from datetime import datetime
 from collections import OrderedDict
+import urllib.request
 
 __title__ = "pyroutelib3"
 __description__ = "Library for simple routing on OSM data"
@@ -213,7 +214,7 @@ class Datastore:
             downloadedSecondsAgo = math.inf
 
         if downloadedSecondsAgo >= self.expire_data:
-             urlretrieve("https://api.openstreetmap.org/api/0.6/map?bbox={0},{1},{2},{3}".format(_tileBoundary(x, y, 15)), filename)
+             urllib.request.urlretrieve("https://api.openstreetmap.org/api/0.6/map?bbox={0[0]},{0[1]},{0[2]},{0[3]}".format(_tileBoundary(x, y, 15)), filename)
 
         self.loadOsm(filename)
 
