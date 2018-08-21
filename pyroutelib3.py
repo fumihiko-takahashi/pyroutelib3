@@ -373,7 +373,7 @@ class Datastore:
             if node2Id not in self.routing.keys(): self.routing[node2Id] = {}
 
             # Is way traversible forward?
-            if oneway not in ["-1", "reverse"] or self.tranport == "foot":
+            if oneway not in ["-1", "reverse"] or self.transport == "foot":
                 self.routing[node1Id][node2Id] = weight
 
             # Is way traversible backword?
